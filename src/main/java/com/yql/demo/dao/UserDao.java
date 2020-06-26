@@ -41,7 +41,7 @@ public interface UserDao {
      * 修改用户信息
      * @param user 用户对象
      */
-    @Update("update user set (u_passwd = ${u_passwd}, u_email = #{u_email}, u_limit = u_limit) where u_id = #{u_id}")
+    @Update("update user set u_passwd = ${u_passwd}, u_email = #{u_email}, u_limit = #{u_limit} where u_name = #{u_name}")
     public void updateUser(User user);
 
 //    /**
