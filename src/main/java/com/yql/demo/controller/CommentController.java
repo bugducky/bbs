@@ -1,8 +1,8 @@
 package com.yql.demo.controller;
 
 
-import com.yql.demo.dao.CommentDao;
 import com.yql.demo.entity.Comment;
+import com.yql.demo.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,17 +14,28 @@ import java.util.List;
 @RestController
 public class CommentController {
     @Autowired
-    CommentDao dao;
+    CommentService cs;
 
     @PostMapping("/comment/submit")
-    public boolean subComment(@RequestBody Comment c) {
+    public void subComment(@RequestBody Comment c) {
         c.setComment_date(new Timestamp(new Date().getTime()).toString());
-        return dao.subComment(c);
+        cs.subComment(c);
     }
 
     @PostMapping("/comment/getComment")
     public List<Comment> getComments(@RequestBody Comment c) {
-        return dao.getComments(c.getComment_a_id());
+        return cs.getComments(c.getComment_a_id());
     }
+
+    @PostMapping("/comment/update")
+    public void updateComment(@RequestBody Comment c) {
+        cs.updateComment(c);
+    }
+
+    @PostMapping("/comment/del")
+    public void delComment(@RequestBody Comment c) {
+        cs.delComment(c);
+    }
+
 
 }
