@@ -52,4 +52,7 @@ public interface ArticleDao {
      */
     @Update("update article set (a_context = #{a_context}, a_name = #{a_name}, a_date = #{a_date}) where a_id = #{a_id}")
     public void updateArticle(Article a);
+
+    @Delete("delete article where a_sort_id = #{sort_id}")
+    void delArticleBySortID(int sort_id);
 }

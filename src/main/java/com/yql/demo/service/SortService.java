@@ -1,5 +1,6 @@
 package com.yql.demo.service;
 
+import com.yql.demo.dao.ArticleDao;
 import com.yql.demo.dao.SortDao;
 import com.yql.demo.entity.Sort;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import java.util.List;
 public class SortService {
     @Autowired
     SortDao dao;
+    @Autowired
+    ArticleDao ad;
 
     public List<Sort> getAllSort() {
         return dao.getAllSort();
@@ -22,6 +25,7 @@ public class SortService {
 
     public void delSort(int sort_id) {
         dao.delSort(sort_id);
+        ad.delArticleBySortID(sort_id);
     }
 
     public Sort getSortByID(int sort_id) {

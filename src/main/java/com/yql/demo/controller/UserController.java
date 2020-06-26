@@ -22,8 +22,12 @@ public class UserController {
 
     @PostMapping("/user/register")
     public boolean register(@RequestBody User user) {
-
         return us.register(user);
+    }
+
+    @PostMapping("/user/del")
+    public void delUser(@RequestBody User user) {
+        us.delUser(user.getU_name());
     }
 
     @GetMapping("/user/getall")

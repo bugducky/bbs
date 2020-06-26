@@ -1,6 +1,7 @@
 package com.yql.demo.controller;
 
 import com.yql.demo.entity.Sort;
+import com.yql.demo.service.ArticleService;
 import com.yql.demo.service.SortService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,8 @@ public class SortController {
 
     @Autowired
     SortService ss;
+    @Autowired
+    ArticleService as;
 
     @GetMapping("/sort/getall")
     public List<Sort> getAllSort() {

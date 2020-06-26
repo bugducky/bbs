@@ -35,4 +35,7 @@ public class ArticleService {
         sd.addArticleNum(a.getA_sort_id());
     }
 
+    public void delArticleBySortID(int sort_id) {
+        ad.delArticleBySortID(sort_id);
+    }
 }
